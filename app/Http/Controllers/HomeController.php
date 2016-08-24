@@ -18,32 +18,25 @@ class HomeController extends Controller
     }
     public function postContact(Request $request){
         $contact= new contact();
-        $contact->Name=$request->input('name');
-        $contact->Email=$request->input('email');
-        $contact->message=$request->input('message');
+        $contact->Name=$request->input('Name');
+        $contact->Email=$request->input('Email');
+        $contact->subject=$request->input('Subject');
+        $contact->message=$request->input('Message');
         $contact->save();
 
-        $to = "tobyokeke@gmail.com";
+        $to = "guru@thegurudeveloper.com";
+
         $subject = "message on your site";
-        $txt = "A client  ".  $request->input('name') .  " with the email  " . "\r\n " .$request->input('email') .  " had a message  ".$request->input('message');
-        $headers = "From: AlpacinoExpress.com" . "\r\n" .
-            "CC: tobyokeke@gmail.com";
+        $txt = "A client  ".  $request->input('Name') .  " with the email  " . "\r\n " .$request->input('Email') .  " had a message  ".$request->input('Message');
+        $headers = "From: Gurudeveloper <contact@gurudeveloperinc.com" . "\r\n" .
+            "CC: toby.okeke@gmail.com" . "\r\n" .
+            "REPLY-TO: " . $request->input('Email')  . "\r\n" ;
 
         mail($to,$subject,$txt,$headers);
 
 
-        return redirect("/contact");
+        return redirect("#contact");
     }
 
-    public function services(){
-        return view('welcome');
 
-    }
-    public function Gallery(){
-        return view ('welcome');
-    }
-
-    public function about(){
-        return view ('welcome');
-    }
 }

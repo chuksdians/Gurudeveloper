@@ -13,9 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::get('/about', 'HomeController@about');
-Route::get('/services', 'HomeController@service');
-Route::get('/gallery', 'HomeController@gallery');
+
 Route::get('/contact', 'HomeController@contact');
 
 Route::post('/contact','HomeController@postContact');
